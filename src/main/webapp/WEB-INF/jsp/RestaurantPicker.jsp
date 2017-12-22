@@ -4,7 +4,7 @@
 <c:param name="pageTitle" value="RP - Picker" />
 </c:import>
 
-<c:import url="/WEB-INF/jsp/common/header.jsp" />
+<c:import url="/WEB-INF/jsp/header.jsp" />
 	<h1>Make your choices here!</h1>
 
 	<c:url var="formAction" value="/RestaurantPicker" />
