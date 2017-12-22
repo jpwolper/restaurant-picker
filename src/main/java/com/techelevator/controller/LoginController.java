@@ -22,7 +22,6 @@ public class LoginController {
 
 	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String showLoginPage(ModelMap model) {
-		model.put("", value);
 		return "login";
 	}
 
