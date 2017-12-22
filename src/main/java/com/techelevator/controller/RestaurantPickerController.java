@@ -18,9 +18,9 @@ public class RestaurantPickerController {
 		this.rpDAO = rpDAO;
 	}
 	
-//	@RequestMapping(path="/", method=RequestMethod.GET)
-//	public String showHomePage(Map<String, Object> model) {
-//		model.put("messages", messageDAO.getPublicMessages(10));
-//		return "home";
-//	}
+	@RequestMapping(path="/", method=RequestMethod.GET)
+	public String showHomePage(Map<String, Object> model) {
+		model.put("messages", messageDAO.getPublicMessages(10));
+		return "home";
+	}
 }
