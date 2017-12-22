@@ -25,7 +25,7 @@
 </script>
 <div>
 <h1>Welcome to Restaurant Picker</h1>
-<p>The amazing benefits of using Restaurant Picker and why you should sign up immediately!</p>
+<p>Behold the amazing benefits of using Restaurant Picker and why you should sign up immediately!</p>
 </div>
 <div>
 	<c:url var="formAction" value="/login" />
@@ -42,6 +42,10 @@
 		</div>
 		<button type="submit">Login</button>
 	</form>
+	<div>
+		<c:url var ="goSignUp" value="/register" />
+		<p>Are you a new user? <a href="${goSignUp}">Click here</a> to sign up.</p>
+	</div>
 </div>
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />
