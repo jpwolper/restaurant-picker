@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
+import com.techelevator.critter.model.Message;
 import com.techelevator.model.Restaurant;
 import com.techelevator.model.User;
 
@@ -24,13 +25,16 @@ public class JDBCRestaurantPickerDAO implements RestaurantPickerDAO {
 	@Override
 	public void saveUser(User newUser) {
 	String sqlSaveUser = "INSERT INTO users (username, password, firstname, lastname, salt) VALUES (?,?,?,?,?)";
-	SqlRowSet results = jdbctemplate.queryForRowSet(sqlSaveUser, newUser.getUserName(), newUser.getPassword(), newUser.getFirstName(), newUser.getLastName(), newUser.getSalt());
+	jdbctemplate.update(sqlSaveUser, newUser.getUserName(), newUser.getPassword(), newUser.getFirstName(), newUser.getLastName(), newUser.getSalt());
 	}
 
 	@Override
 	public User getUser(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		User newUser = new User();
+		String sqlGetUser = "Select * FROM users WHERE username = ?";
+		SqlRowSet results = jdbctemplate.queryForRowSet(sqlGetUser, userName);
+		newUser = mapRowToUser(results);
+		return newUser;
 	}
 
 	@Override
@@ -45,5 +49,14 @@ public class JDBCRestaurantPickerDAO implements RestaurantPickerDAO {
 		return null;
 	}
 
+	private User mapRowToUser(SqlRowSet results) {
+		User u = new User();
+		u.setUserId(results.getLong("userid"));
+		u.setUserName(results.getString("username"));
+		u.setPassword(results.getString("password"));
+		u.setFirstName(results.getString("firstname"));
+		u.setLastName(results.getString("lastname"));
+		return u;
+	}
 	
 }
