@@ -12,9 +12,9 @@ import com.techelevator.model.User;
 public class MockRestaurantPickerDAO implements RestaurantPickerDAO {
 
 	@Override
-	public User saveUser(User newUser) {
+	public void saveUser(User newUser) {
 		
-		return new User();
+		
 	}
 
 	@Override

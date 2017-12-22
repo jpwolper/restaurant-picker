@@ -23,13 +23,13 @@ public class LoginController {
 		this.rpDAO = rpDAO;
 	}
 
-	@RequestMapping(path = "/login", method = RequestMethod.GET)
-	public String showLoginPage() {
+	@RequestMapping(path = "/", method = RequestMethod.GET)
+	public String loginPageGet() {
 		return "login";
 	}
 
-	@RequestMapping(path = "/login", method = RequestMethod.POST)
-	public String showHomePage(ModelMap model, HttpServletRequest request) {
+	@RequestMapping(path = "/", method = RequestMethod.POST)
+	public String loginPagePost(ModelMap model, HttpServletRequest request) {
 		User user = new User();
 		user.setUserName(request.getParameter("userName"));
 		model.put("user", rpDAO.getUser(user.getUserName()));

@@ -24,12 +24,12 @@ public class RegisterController {
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.GET)
-	public String showRegisterPage(Map<String, Object> model) {
+	public String registerPageGet(Map<String, Object> model) {
 		return "register";
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
-	public String postRegisterPage(ModelMap model, HttpServletRequest request) {
+	public String registerPagePost(ModelMap model, HttpServletRequest request) {
 		User newUser = new User();
 		newUser.setFirstName(request.getParameter("firstName"));
 		newUser.setLastName(request.getParameter("lastName"));
@@ -37,7 +37,8 @@ public class RegisterController {
 		newUser.setUserId(Integer.parseInt(request.getParameter("userId")));
 		newUser.setSalt(request.getParameter("salt"));
 		newUser.setUserName(request.getParameter("userName"));
-		model.put("user", rpDAO.saveUser(newUser));
-		return "register";
+		rpDAO.saveUser(newUser);
+		model.put("user", newUser);
+		return "RestaurantPicker";
 	}
 }

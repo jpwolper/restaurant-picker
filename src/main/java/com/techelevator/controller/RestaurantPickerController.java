@@ -1,5 +1,7 @@
 package com.techelevator.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,17 +25,21 @@ public class RestaurantPickerController {
 		this.rpDAO = rpDAO;
 	}
 
-	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String showHomePage() {
-		return "home";
+	@RequestMapping(path = "/picker", method = RequestMethod.GET)
+	public String restaurantPickerPageGet(ModelMap model) {
+		
+		List<String> types = rpDAO.getFoodTypes();
+		model.put("foodTypes", types);
+		return "RestaurantPicker";
 	}
 
-	@RequestMapping(path = "/", method = RequestMethod.POST)
-	public String showHomePagePost(ModelMap model, HttpServletRequest request) {
-		Restaurant theRestaurant = new Restaurant();
-		theRestaurant.setRating(Integer.parseInt(request.getParameter("rating")));
-		theRestaurant.setFoodType(request.getParameter("foodType"));
-		model.put("allRestaurants", rpDAO.getRestaurants(theRestaurant.getFoodType(), theRestaurant.getRating()));
-		return "home";
+	@RequestMapping(path = "/picker", method = RequestMethod.POST)
+	public String restaurantPickerPagePost(ModelMap model, HttpServletRequest request) {
+		int rating = Integer.parseInt(request.getParameter("rating"));
+		String type = request.getParameter("foodType");
+		List<Restaurant> restaurants = rpDAO.getRestaurants(type, rating);
+		
+		model.put("restaurant", restaurants.get(0));
+		return "Details";
 	}
 }
