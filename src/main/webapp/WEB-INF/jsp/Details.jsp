@@ -9,6 +9,15 @@
 
 </head>
 <body>
+<c:import url="/WEB-INF/jsp/common/header.jsp" />
 
+<h2>Your restaurant pick for today is:</h2>
+<h4>${restaurant.getRestaurantName}</h4>
+<p>${restaurant.getFoodType}</p>
+<p>${restaurant.getStreetAddress}</p>
+<p>${restaurant.getZipCode}</p>
+<p>${restaurant.getRating}</p>
+
+<c:import url="/WEB-INF/jsp/common/footer.jsp" />
 </body>
 </html>

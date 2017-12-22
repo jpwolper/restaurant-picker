@@ -8,6 +8,7 @@
 <title>Restaurant Picker</title>
 </head>
 <body>
+<c:import url="/WEB-INF/jsp/common/header.jsp" />
 	<h1>Make your choices here!</h1>
 
 	<c:url var="formAction" value="/RestaurantPicker" />
@@ -18,8 +19,8 @@
 			<label for="typeOfFood" style="color: black;">What type of food do you want?</label> 
 			<select
 				name="typeOfFood" id="typeOfFood">
-				<c:forEach items="${foodTypes}" value="foodType"> 
-				<option value="${foodTypes}"></option>
+				<c:forEach items="${foodTypes}" var="foodType"> 
+				<option value="${foodType}">"${foodType}"</option>
 			</c:forEach >	
 			</select>
 		</div>
@@ -41,6 +42,6 @@
 		</div>
 
 	</form>
-
+<c:import url="/WEB-INF/jsp/common/footer.jsp" />
 </body>
 </html>
