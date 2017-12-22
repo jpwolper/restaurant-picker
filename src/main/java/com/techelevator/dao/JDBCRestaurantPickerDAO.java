@@ -8,9 +8,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
+
 import com.techelevator.model.Restaurant;
 import com.techelevator.model.User;
 
+@Component
 public class JDBCRestaurantPickerDAO implements RestaurantPickerDAO {
 	
 	private JdbcTemplate jdbctemplate;
@@ -52,7 +55,7 @@ public class JDBCRestaurantPickerDAO implements RestaurantPickerDAO {
 	@Override
 	public List<String> getFoodTypes() {
 		List<String> allFoodTypes = new ArrayList<String>();
-		String sqlGetAllFoodTypes = "Select DISTINCT foodtype FROM restaurant";
+		String sqlGetAllFoodTypes = "Select DISTINCT foodtype FROM restaurants";
 		SqlRowSet results = jdbctemplate.queryForRowSet(sqlGetAllFoodTypes);
 		while (results.next()) {
 			allFoodTypes.add(results.getString("foodtype"));

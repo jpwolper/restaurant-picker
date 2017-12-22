@@ -8,6 +8,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.techelevator.PasswordHasher;
+import com.techelevator.Security;
 import com.techelevator.dao.RestaurantPickerDAO;
 import com.techelevator.model.User;
 
@@ -28,10 +30,22 @@ public class LoginController {
 
 	@RequestMapping(path = "/", method = RequestMethod.POST)
 	public String loginPagePost(ModelMap model, HttpServletRequest request) {
+		String jspPage = "login";
+		
 		User user = new User();
 		user.setUserName(request.getParameter("userName"));
-		model.put("user", rpDAO.getUser(user.getUserName()));
-		return "login";
+		User dbUser = rpDAO.getUser(user.getUserName());
+		PasswordHasher hasher = new PasswordHasher();
+		byte[] salt = hasher.generateRandomSalt();
+		Security security = new Security();
+		boolean isValid = security.IsUserValid(dbUser, request.getParameter("password"), salt);
+		if (isValid)
+		{
+			jspPage = "RestaurantPicker";
+			model.put("user", dbUser);
+		}
+	
+		return jspPage;
 	}
 
 }

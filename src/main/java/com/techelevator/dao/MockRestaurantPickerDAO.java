@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.techelevator.model.Restaurant;
 import com.techelevator.model.User;
 
-@Component
+//@Component
 public class MockRestaurantPickerDAO implements RestaurantPickerDAO {
 
 	@Override

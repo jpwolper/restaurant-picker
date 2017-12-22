@@ -61,7 +61,7 @@
 	});
 </script>
 
-<c:url var="formAction" value="/users" />
+<c:url var="formAction" value="/register" />
 <form method="POST" action="${formAction}">
 	<div>
 		<div>
