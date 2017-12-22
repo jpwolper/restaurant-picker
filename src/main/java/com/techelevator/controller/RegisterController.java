@@ -13,19 +13,19 @@ import com.techelevator.dao.RestaurantPickerDAO;
 public class RegisterController {
 
 	private RestaurantPickerDAO rpDAO;
-	
+
 	@Autowired
 	public RegisterController(RestaurantPickerDAO rpDAO) {
 		this.rpDAO = rpDAO;
 	}
-	
-	@RequestMapping(path="/register", method=RequestMethod.POST)
-	public String shoRegisterPage() {
+
+	@RequestMapping(path = "/register", method = RequestMethod.GET)
+	public String showRegisterPage(Map<String, Object> model) {
 		return "register";
 	}
-	@RequestMapping(path="/login", method=RequestMethod.POST)
-	public String showLoginPage() {
-		return "login";
-	}
 
+	@RequestMapping(path = "/register", method = RequestMethod.POST)
+	public String postRegisterPage(Map<String, Object> model) {
+		return "register";
+	}
 }
