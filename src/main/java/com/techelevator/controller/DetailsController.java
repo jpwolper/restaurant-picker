@@ -11,15 +11,15 @@ import com.techelevator.dao.RestaurantPickerDAO;
 
 @Controller
 public class DetailsController {
-	
+
 	private RestaurantPickerDAO rpDAO;
-	
+
 	@Autowired
 	public DetailsController(RestaurantPickerDAO rpDAO) {
 		this.rpDAO = rpDAO;
 	}
-	
-	@RequestMapping(path="/Details", method=RequestMethod.GET)
+
+	@RequestMapping(path = "/Details", method = RequestMethod.GET)
 	public String showRestaurantDetailPage(Map<String, Object> model) {
 		return "Details";
 	}

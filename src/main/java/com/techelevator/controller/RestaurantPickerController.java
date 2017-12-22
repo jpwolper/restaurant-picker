@@ -12,18 +12,18 @@ import com.techelevator.dao.RestaurantPickerDAO;
 public class RestaurantPickerController {
 
 	private RestaurantPickerDAO rpDAO;
-	
+
 	@Autowired
 	public RestaurantPickerController(RestaurantPickerDAO rpDAO) {
 		this.rpDAO = rpDAO;
 	}
-	
-	@RequestMapping(path="/", method=RequestMethod.GET)
+
+	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String showHomePage() {
 		return "home";
 	}
-	
-	@RequestMapping(path="/", method=RequestMethod.POST)
+
+	@RequestMapping(path = "/", method = RequestMethod.POST)
 	public String showHomePagePost() {
 		return "home";
 	}
