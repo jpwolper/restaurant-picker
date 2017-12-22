@@ -1,6 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:import url="/WEB-INF/jsp/header.jsp" />
+<c:import url="/WEB-INF/jsp/header.jsp">
+<c:param name="pageTitle" value="RP - Login" />
+</c:import>
+
 <script type="text/javascript">
 	$(document).ready(function () {
 	
@@ -23,9 +26,10 @@
 		});
 	});
 </script>
+
 <div>
 <h1>Welcome to Restaurant Picker</h1>
-<p>Behold the amazing benefits of using Restaurant Picker and why you should sign up immediately!</p>
+<p>Sometimes the toughest decision is "Where are we going to eat?" Behold the amazing benefits of using Restaurant Picker and why you should sign up immediately!</p>
 </div>
 <div>
 	<c:url var="formAction" value="/login" />
@@ -40,7 +44,7 @@
 				id="password" name="password" placeHolder="Password"
 				class="form-control" />
 		</div>
-		<button type="submit">Login</button>
+		<button type="submit" class="resPickerButton">Login</button>
 	</form>
 	<div>
 		<c:url var ="goSignUp" value="/register" />

@@ -3,28 +3,31 @@ div {
     display: block;
 }
 
-body {
-    line-height: 1.6;
-    font-weight: 400;
-    font-family: Azo Sans,sans-serif;
-    -webkit-font-smoothing: antialiased;
-    background-color: #fff;
-    color: #000;
-    max-width: 1024px;
-    margin: 0 auto;
-	width: 85%;
-}
-
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 2rem;
     font-weight: 700;
+}
+container {
+    max-width: 1024px;
+    margin: 0 auto;
+	width: 85%;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: Azo Sans,sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 header {
 	height: 85px;
 	border-bottom: solid thin #DDD;
 	margin-bottom: 2rem;
+	background-color: #edf8fc;
+}
+
+body {
+    background-color: #fff;
+    color: #000;
 }
 
 #logo {
