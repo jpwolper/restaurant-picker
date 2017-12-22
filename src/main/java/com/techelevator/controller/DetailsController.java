@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,7 +21,8 @@ public class DetailsController {
 	}
 
 	@RequestMapping(path = "/Details", method = RequestMethod.GET)
-	public String showRestaurantDetailPage(Map<String, Object> model) {
+	public String showRestaurantDetailPage(ModelMap model) {
+		
 		return "Details";
 	}
 
