@@ -19,6 +19,10 @@ public class LoginController {
 		public LoginController(RestaurantPickerDAO rpDAO) {
 			this.rpDAO = rpDAO;
 		}
+		@RequestMapping(path="/login", method=RequestMethod.GET)
+		public String showLoginPage() {
+			return "login";
+		}
 		
 		@RequestMapping(path="/login", method=RequestMethod.POST)
 		public String showHomePage(Map<String, Object> model) {

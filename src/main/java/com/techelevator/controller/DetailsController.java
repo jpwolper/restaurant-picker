@@ -18,9 +18,9 @@ public class DetailsController {
 	public DetailsController(RestaurantPickerDAO rpDAO) {
 		this.rpDAO = rpDAO;
 	}
+	
 	@RequestMapping(path="/Details", method=RequestMethod.GET)
 	public String showRestaurantDetailPage(Map<String, Object> model) {
-		model.put("messages", messageDAO.getPublicMessages(10));
 		return "Details";
 	}
 
