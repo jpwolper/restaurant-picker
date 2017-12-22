@@ -6,12 +6,15 @@
 	<head>
 		<c:url var="cssHref" value="/css/site.css" />
 		<link type="text/css" rel="stylesheet" href="${cssHref}" /> 
+	    <script src="js/jquery.min.js" defer></script>
+		<script src="js/jquery.validate.min.js" defer></script>
+		<script src="js/additional-methods.min.js" defer></script>
 		<title>${pageTitle}</title>
 	</head>
 	
-<c:url var="restaurantPickerURL" value="/restaurantPicker" />
+<c:url var="pickerURL" value="/picker" />
 <c:url var="detailsURL" value="/details" />
-<c:url var="loginURL" value="/login" />
+<c:url var="loginURL" value="/" />
 <c:url var="registerURL" value="/register" />
 <c:url var="logoURL" value="/img/logo.svg" />
 	    

@@ -1,8 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:import url="/WEB-INF/jsp/header.jsp" />
+<c:import url="/WEB-INF/jsp/header.jsp">
+<c:param name="pageTitle" value="RP - Register" />
+</c:import>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function () {
 		
 		$.validator.addMethod('hasUppercase', function(value) {
@@ -59,32 +61,32 @@
 	});
 </script>
 
-	<c:url var="formAction" value="/users" />
-	<form method="POST" action="${formAction}">
+<c:url var="formAction" value="/users" />
+<form method="POST" action="${formAction}">
+	<div>
 		<div>
-			<div>
-				<label for="firstName">First Name: </label> <input type="text"
-					id="firstName" name="firstName" placeHolder="First Name" />
-			</div>
-			<div>
-				<label for="lastName">Last Name: </label> <input type="text"
-					id="lastName" name="lastName" placeHolder="Last Name" />
-			</div>
-			<div>
-				<label for="userName">User Name: </label> <input type="text"
-					id="userName" name="userName" placeHolder="User Name" />
-			</div>
-			<div>
-				<label for="password">Password: </label> <input type="password"
-					id="password" name="password" placeHolder="Password" />
-			</div>
-			<div>
-				<label for="confirmPassword">Confirm Password: </label> 
-				<input type="password" id="confirmPassword" name="confirmPassword"
-				placeHolder="Re-Type Password" />
-			</div>
-			<button type="submit">Sign Me Up!</button>
+			<label for="firstName">First Name: </label> <input type="text"
+				id="firstName" name="firstName" placeHolder="First Name" />
 		</div>
-	</form>
+		<div>
+			<label for="lastName">Last Name: </label> <input type="text"
+				id="lastName" name="lastName" placeHolder="Last Name" />
+		</div>
+		<div>
+			<label for="userName">User Name: </label> <input type="text"
+				id="userName" name="userName" placeHolder="User Name" />
+		</div>
+		<div>
+			<label for="password">Password: </label> <input type="password"
+				id="password" name="password" placeHolder="Password" />
+		</div>
+		<div>
+			<label for="confirmPassword">Confirm Password: </label> 
+			<input type="password" id="confirmPassword" name="confirmPassword"
+			placeHolder="Re-Type Password" />
+		</div>
+		<button type="submit" class="resPickerButton">Sign Me Up!</button>
+	</div>
+</form>
 
-	<c:import url="/WEB-INF/jsp/footer.jsp" />
+<c:import url="/WEB-INF/jsp/footer.jsp" />
