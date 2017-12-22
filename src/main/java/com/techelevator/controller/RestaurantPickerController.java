@@ -2,6 +2,9 @@ package com.techelevator.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,11 +33,11 @@ public class RestaurantPickerController {
 
 	@RequestMapping(path = "/picker", method = RequestMethod.POST)
 	public String restaurantPickerPagePost(ModelMap model, HttpServletRequest request) {
-		int rating = Integer.parseInt(request.getParameter("rating"));
-		String type = request.getParameter("foodType");
+		int rating = Integer.parseInt(request.getParameter("stars"));
+		String type = request.getParameter("typeOfFood");
 		List<Restaurant> restaurants = rpDAO.getRestaurants(type, rating);
-		
-		model.put("restaurant", restaurants.get(0));
+		int randomNum = ThreadLocalRandom.current().nextInt(0, restaurants.size());
+		model.put("restaurant", restaurants.get(randomNum));
 		return "Details";
 	}
 }
