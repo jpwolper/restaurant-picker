@@ -1,8 +1,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:import url="/WEB-INF/jsp/header.jsp" />
+<%-- <c:import url="/WEB-INF/jsp/header.jsp" /> --%>
 
-<script type="text/javascript">
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<c:url var="cssHref" value="/css/site.css" />
+		<link type="text/css" rel="stylesheet" href="${cssHref}" /> 
+		<title>${pageTitle}</title>
+	</head>
+	
+<c:url var="restaurantPickerURL" 	value="/restaurantPicker" />
+<c:url var="detailsURL" 		value="/details" />
+<c:url var="logoURL" 		value="/img/logo.svg" />
+	    
+<div id="container">
+	<header> 
+		<nav>
+			<ul>
+			<div class="npButton">
+				<li><a href="${homePageUrl}">Home</a></li></div>
+			<div class="npButton">
+				<li><a href="${surveyUrl}">Survey</a></li></div>
+			</ul>
+		</nav>
+		<a href="${homePageURL}"> 
+		    <img src="${logoURL}" id="logo" />
+		</a>
+	</header>
+	
+	<body>
+
+	<script type="text/javascript">
 	$(document).ready(function () {
 		
 		$.validator.addMethod('hasUppercase', function(value) {
@@ -59,31 +89,32 @@
 	});
 </script>
 
-<c:url var="formAction" value="/users" />
-<form method="POST" action="${formAction}">
-	<div>
+	<c:url var="formAction" value="/users" />
+	<form method="POST" action="${formAction}">
 		<div>
-			<label for="firstName">First Name: </label>
-			<input type="text" id="firstName" name="firstName" placeHolder="First Name" />
+			<div>
+				<label for="firstName">First Name: </label> <input type="text"
+					id="firstName" name="firstName" placeHolder="First Name" />
+			</div>
+			<div>
+				<label for="lastName">Last Name: </label> <input type="text"
+					id="lastName" name="lastName" placeHolder="Last Name" />
+			</div>
+			<div>
+				<label for="userName">User Name: </label> <input type="text"
+					id="userName" name="userName" placeHolder="User Name" />
+			</div>
+			<div>
+				<label for="password">Password: </label> <input type="password"
+					id="password" name="password" placeHolder="Password" />
+			</div>
+			<div>
+				<label for="confirmPassword">Confirm Password: </label> <input
+					type="password" id="confirmPassword" name="confirmPassword"
+					placeHolder="Re-Type Password" />
+			</div>
+			<button type="submit">Sign Me Up!</button>
 		</div>
-		<div>
-			<label for="lastName">Last Name: </label>
-			<input type="text" id="lastName" name="lastName" placeHolder="Last Name" />
-		</div>
-		<div>
-			<label for="userName">User Name: </label>
-			<input type="text" id="userName" name="userName" placeHolder="User Name" />
-		</div>
-		<div>
-			<label for="password">Password: </label>
-			<input type="password" id="password" name="password" placeHolder="Password" />
-		</div>
-		<div>
-			<label for="confirmPassword">Confirm Password: </label>
-			<input type="password" id="confirmPassword" name="confirmPassword" placeHolder="Re-Type Password" />	
-		</div>
-		<button type="submit">Sign Me Up!</button>
-	</div>
-</form>
-		
-<c:import url="/WEB-INF/jsp/footer.jsp" />
+	</form>
+
+	<c:import url="/WEB-INF/jsp/footer.jsp" />
