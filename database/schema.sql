@@ -3,7 +3,7 @@
 -- *************************************************************************************************
 
 BEGIN;
-CREATE TABLE user(
+CREATE TABLE users(
 	userId SERIAL primary key,
 	userName VARCHAR (64) UNIQUE,
 	password VARCHAR (64),
@@ -12,7 +12,7 @@ CREATE TABLE user(
 	salt VARCHAR (255)
 );
 
-CREATE TABLE restaurant(
+CREATE TABLE restaurants(
 	restaurantId SERIAL primary key,
 	restaurantName VARCHAR (128),
 	streetAddress VARCHAR (128),

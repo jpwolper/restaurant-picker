@@ -1,36 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%-- <c:import url="/WEB-INF/jsp/header.jsp" /> --%>
-
-<!DOCTYPE html>
-<html>
-
-	<head>
-		<c:url var="cssHref" value="/css/site.css" />
-		<link type="text/css" rel="stylesheet" href="${cssHref}" /> 
-		<title>${pageTitle}</title>
-	</head>
-	
-<c:url var="restaurantPickerURL" 	value="/restaurantPicker" />
-<c:url var="detailsURL" 		value="/details" />
-<c:url var="logoURL" 		value="/img/logo.svg" />
-	    
-<div id="container">
-	<header> 
-		<nav>
-			<ul>
-			<div class="npButton">
-				<li><a href="${homePageUrl}">Home</a></li></div>
-			<div class="npButton">
-				<li><a href="${surveyUrl}">Survey</a></li></div>
-			</ul>
-		</nav>
-		<a href="${homePageURL}"> 
-		    <img src="${logoURL}" id="logo" />
-		</a>
-	</header>
-	
-	<body>
+<c:import url="/WEB-INF/jsp/header.jsp" />
 
 	<script type="text/javascript">
 	$(document).ready(function () {
