@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,8 +40,8 @@ public class RestaurantPickerController {
 		int rating = Integer.parseInt(request.getParameter("rating"));
 		String type = request.getParameter("foodType");
 		List<Restaurant> restaurants = rpDAO.getRestaurants(type, rating);
-		
-		model.put("restaurant", restaurants.get(0));
+		int randomNum = ThreadLocalRandom.current().nextInt(0, restaurants.size() + 1);
+		model.put("restaurant", restaurants.get(randomNum));
 		return "Details";
 	}
 }
