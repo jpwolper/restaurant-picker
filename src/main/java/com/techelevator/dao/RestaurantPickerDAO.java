@@ -11,9 +11,7 @@ public interface RestaurantPickerDAO {
 	
 	public User getUser(String userName);
 	
-	public boolean searchForUserNameAndPassword(String userName, String password);
-	
-	public List <Restaurant> getRestaurant(String foodType, int minRating);
+	public List <Restaurant> getRestaurants(String foodType, int minRating);
 	
 	public List <String> getFoodTypes(); 
 	
