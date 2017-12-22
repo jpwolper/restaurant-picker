@@ -31,9 +31,14 @@ header {
 	height: 80px;
 }
 
+.subHeader {
+	background-color: black;
+}
+
 .nameHeader {
 	float: right;
 	margin: 1rem;
+	color: white;
 }
 
 .resPickerButton {
