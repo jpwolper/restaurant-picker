@@ -79,9 +79,9 @@
 					id="password" name="password" placeHolder="Password" />
 			</div>
 			<div>
-				<label for="confirmPassword">Confirm Password: </label> <input
-					type="password" id="confirmPassword" name="confirmPassword"
-					placeHolder="Re-Type Password" />
+				<label for="confirmPassword">Confirm Password: </label> 
+				<input type="password" id="confirmPassword" name="confirmPassword"
+				placeHolder="Re-Type Password" />
 			</div>
 			<button type="submit">Sign Me Up!</button>
 		</div>
