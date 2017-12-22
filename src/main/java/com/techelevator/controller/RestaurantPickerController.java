@@ -37,10 +37,10 @@ public class RestaurantPickerController {
 
 	@RequestMapping(path = "/picker", method = RequestMethod.POST)
 	public String restaurantPickerPagePost(ModelMap model, HttpServletRequest request) {
-		int rating = Integer.parseInt(request.getParameter("rating"));
-		String type = request.getParameter("foodType");
+		int rating = Integer.parseInt(request.getParameter("stars"));
+		String type = request.getParameter("typeOfFood");
 		List<Restaurant> restaurants = rpDAO.getRestaurants(type, rating);
-		int randomNum = ThreadLocalRandom.current().nextInt(0, restaurants.size() + 1);
+		int randomNum = ThreadLocalRandom.current().nextInt(0, restaurants.size());
 		model.put("restaurant", restaurants.get(randomNum));
 		return "Details";
 	}

@@ -7,24 +7,21 @@
 <c:import url="/WEB-INF/jsp/header.jsp" />
 	<h1>Make your choices here!</h1>
 
-	<c:url var="formAction" value="/RestaurantPicker" />
-	<form method="GET" action="${formAction}">
-		
+	<c:url var="formAction" value="/picker" />
+	<form method="POST" action="${formAction}">
 
 		<div class="formInputGroup">
 			<label for="typeOfFood" style="color: black;">What type of food do you want?</label> 
-			<select
-				name="typeOfFood" id="typeOfFood">
+			<select name="typeOfFood" id="typeOfFood">
 				<c:forEach items="${foodTypes}" var="foodType"> 
-				<option value="${foodType}">"${foodType}"</option>
+				<option value="${foodType}">${foodType}</option>
 			</c:forEach >	
 			</select>
 		</div>
 
 		<div class="formInputGroup">
 			<label for="stars">Rating:</label> 
-			<select
-				name="stars" id="stars">
+			<select name="stars" id="stars">
 				<option value="1">*</option>
 				<option value="2">**</option>
 				<option value="3">***</option>
