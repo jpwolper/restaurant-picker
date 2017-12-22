@@ -11,18 +11,16 @@
 	<h1>Make your choices here!</h1>
 
 	<c:url var="formAction" value="/RestaurantPicker" />
-	<form method="POST" action="${formAction}">
+	<form method="GET" action="${formAction}">
 		
 
 		<div class="formInputGroup">
 			<label for="typeOfFood" style="color: black;">What type of food do you want?</label> 
 			<select
 				name="typeOfFood" id="typeOfFood">
-				<option value="Type">type</option>
-				<option value="Type">type</option>
-				<option value="Type">type</option>
-				<option value="Type">type</option>
-				<option value="Type">type</option>
+				<c:forEach items="${foodTypes}" value="foodType"> 
+				<option value="${foodTypes}"></option>
+			</c:forEach >	
 			</select>
 		</div>
 
@@ -30,11 +28,11 @@
 			<label for="stars">Rating:</label> 
 			<select
 				name="stars" id="stars">
-				<option value="*">*</option>
-				<option value="**">**</option>
-				<option value="***">***</option>
-				<option value="****">****</option>
-				<option value="*****">*****L</option>
+				<option value="1">*</option>
+				<option value="2">**</option>
+				<option value="3">***</option>
+				<option value="4">****</option>
+				<option value="5">*****L</option>
 			</select>
 		</div>
 		
