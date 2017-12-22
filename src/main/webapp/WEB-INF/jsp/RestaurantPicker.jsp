@@ -38,6 +38,6 @@
 		</div>
 
 	</form>
-<c:import url="/WEB-INF/jsp/common/footer.jsp" />
+<c:import url="/WEB-INF/jsp/footer.jsp" />
 </body>
 </html>
