@@ -1,0 +1,70 @@
+
+div {
+    display: block;
+}
+
+body {
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: Azo Sans,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+    color: #000;
+    max-width: 1024px;
+    margin: 0 auto;
+	width: 85%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+header {
+	height: 85px;
+	border-bottom: solid thin #DDD;
+	margin-bottom: 2rem;
+}
+
+#logo {
+	height: 80px;
+}
+
+.nameHeader {
+	float: right;
+	margin: 1rem;
+}
+
+.resPickerButton {
+	-moz-box-shadow:inset 0px -1px 8px 3px #eee;
+	-webkit-box-shadow:inset 0px -1px 8px 3px #eee;
+	box-shadow:inset 0px -1px 8px 3px #eee;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:1px solid #bbb;
+	width:100px;
+	display:inline;
+	cursor:pointer;
+	font-size:15px;
+	text-align: center;
+	color: #FFF;
+	padding:6px 13px;
+	text-shadow:0px 1px 0px #263666;
+	margin: 9px auto;
+}
+
+.resPickerButton a {
+	color: #bbb;
+	text-decoration:none;
+}
+
+.resPickerButton:hover {
+	box-shadow:inset 0px 0px 7px 2px aqua;
+}
+.resPickerButton:active {
+	position:relative;
+	top:1px;
+	text-decoration: none;
+}
