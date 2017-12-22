@@ -9,7 +9,7 @@ public class Restaurant {
 	private String streetAddress;
 	private String zipCode;
 	private String foodType;
-	private BigDecimal rating;
+	private Integer rating;
 	
 	
 	public long getRestaurantId() {
@@ -42,10 +42,10 @@ public class Restaurant {
 	public void setFoodType(String foodType) {
 		this.foodType = foodType;
 	}
-	public BigDecimal getRating() {
+	public Integer getRating() {
 		return rating;
 	}
-	public void setRating(BigDecimal rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 	
