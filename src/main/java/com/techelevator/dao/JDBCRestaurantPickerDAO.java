@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import com.techelevator.critter.model.Message;
+//import com.techelevator.critter.model.Message;
 import com.techelevator.model.Restaurant;
 import com.techelevator.model.User;
 
