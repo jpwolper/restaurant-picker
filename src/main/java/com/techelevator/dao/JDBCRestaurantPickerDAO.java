@@ -8,8 +8,8 @@ import com.techelevator.model.User;
 public class JDBCRestaurantPickerDAO implements RestaurantPickerDAO {
 
 	@Override
-	public User saveUser(User newUser) {
-		return newUser;
+	public void saveUser(User newUser) {
+	
 	}
 
 	@Override
@@ -26,6 +26,12 @@ public class JDBCRestaurantPickerDAO implements RestaurantPickerDAO {
 
 	@Override
 	public List<String> getFoodTypes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Restaurant getRestaurant(long restaurantId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
