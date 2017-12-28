@@ -3,6 +3,8 @@ package com.techelevator.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +21,7 @@ import com.techelevator.model.User;
 public class LoginController {
 
 	private RestaurantPickerDAO rpDAO;
-
+	
 	@Autowired
 	public LoginController(RestaurantPickerDAO rpDAO) {
 		this.rpDAO = rpDAO;
@@ -31,22 +33,25 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.POST)
-	public String loginPagePost(ModelMap model, HttpServletRequest request) {
+	public String loginPagePost(ModelMap model, HttpServletRequest request, HttpSession session) {
 		String jspPage = "login";
 		
 		try {
-			User user = new User();
-			user.setUserName(request.getParameter("userName"));
-			User dbUser = rpDAO.getUser(user.getUserName());
-			if (Security.IsUserValid(dbUser, request.getParameter("password"))) {
-				List<String> foodTypes = rpDAO.getFoodTypes();
-				model.put("foodTypes", foodTypes);
+			String userName = request.getParameter("userName");
+			User dbUser = rpDAO.getUser(userName);
+			if (dbUser.getUserId() != 0 && Security.IsUserValid(dbUser, request.getParameter("password"))) {
+				
+				model.put("user", dbUser.getFirstName());
+				
+				List<String> types = rpDAO.getFoodTypes();
+				model.put("foodTypes", types);
+				
+				session.setAttribute("user", dbUser.getFirstName());
 				
 				jspPage = "RestaurantPicker";
-				model.put("user", dbUser);
 			}
 			else {
-				model.put("error", "Invalid Password");
+				model.put("error", "Invalid username/password combination");
 			}
 		}
 		catch(Exception ex){

@@ -25,11 +25,7 @@
 		</a>
 		<div class="nameHeader" id="pageHeader">
 			<h1>Restaurant Picker</h1>
-		</div>
-		<div class="subHeader">
-			<div class="nameHeader" id="nameHeader">
-			<h3>${firstName} ${lastName}</h3>
-			</div>
+			<b>Logged In: ${user}</b>
 		</div>
 	</header>
 	

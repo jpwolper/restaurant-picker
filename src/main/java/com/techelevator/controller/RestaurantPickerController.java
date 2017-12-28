@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -23,31 +24,29 @@ public class RestaurantPickerController {
 		this.rpDAO = rpDAO;
 	}
 
-	@RequestMapping(path = "/picker", method = RequestMethod.GET)
-	public String restaurantPickerPageGet(ModelMap model) {
-		
-		try {
-			List<String> types = rpDAO.getFoodTypes();
-			model.put("foodTypes", types);
-		}
-		catch(Exception ex) {
-			model.put("error", ex.getMessage());
-		}
-		return "RestaurantPicker";
-	}
-
 	@RequestMapping(path = "/picker", method = RequestMethod.POST)
-	public String restaurantPickerPagePost(ModelMap model, HttpServletRequest request) {
+	public String restaurantPickerPagePost(ModelMap model, HttpServletRequest request, HttpSession session) {
+		String jspPage = "login";
 		try {
-			int rating = Integer.parseInt(request.getParameter("stars"));
-			String type = request.getParameter("typeOfFood");
-			List<Restaurant> restaurants = rpDAO.getRestaurants(type, rating);
-			int randomNum = ThreadLocalRandom.current().nextInt(0, restaurants.size());
-			model.put("restaurant", restaurants.get(randomNum));
+			Object user = session.getAttribute("user");
+			if (user != null) {
+				model.put("user", (String) user);
+			
+				int rating = Integer.parseInt(request.getParameter("stars"));
+				String type = request.getParameter("typeOfFood");
+				List<Restaurant> restaurants = rpDAO.getRestaurants(type, rating);
+				int randomNum = ThreadLocalRandom.current().nextInt(0, restaurants.size());
+				model.put("restaurant", restaurants.get(randomNum));
+				
+				jspPage = "Details";
+			}
+			else {
+				throw new Exception("User not logged in.");
+			}
 		}
 		catch(Exception ex) {
 			model.put("error", ex.getMessage());
 		}
-		return "Details";
+		return jspPage;
 	}
 }
