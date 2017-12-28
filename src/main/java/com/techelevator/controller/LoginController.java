@@ -1,5 +1,7 @@
 package com.techelevator.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,21 +31,26 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.POST)
-
 	public String loginPagePost(ModelMap model, HttpServletRequest request) {
 		String jspPage = "login";
 		
-		User user = new User();
-		user.setUserName(request.getParameter("userName"));
-		User dbUser = rpDAO.getUser(user.getUserName());
-		PasswordHasher hasher = new PasswordHasher();
-		byte[] salt = hasher.generateRandomSalt();
-		Security security = new Security();
-		boolean isValid = security.IsUserValid(dbUser, request.getParameter("password"), salt);
-		if (isValid)
-		{
-			jspPage = "RestaurantPicker";
-			model.put("user", dbUser);
+		try {
+			User user = new User();
+			user.setUserName(request.getParameter("userName"));
+			User dbUser = rpDAO.getUser(user.getUserName());
+			if (Security.IsUserValid(dbUser, request.getParameter("password"))) {
+				List<String> foodTypes = rpDAO.getFoodTypes();
+				model.put("foodTypes", foodTypes);
+				
+				jspPage = "RestaurantPicker";
+				model.put("user", dbUser);
+			}
+			else {
+				model.put("error", "Invalid Password");
+			}
+		}
+		catch(Exception ex){
+			model.put("error", ex.getMessage());
 		}
 	
 		return jspPage;

@@ -35,23 +35,28 @@ public class RegisterController {
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
 	public String registerPagePost(ModelMap model, HttpServletRequest request) {
 		
-		String password = request.getParameter("password");
-		PasswordHasher hasher = new PasswordHasher();
-		byte[] salt = hasher.generateRandomSalt();
-		String hash = hasher.computeHash(password, salt);
-		
-		User newUser = new User();
-		newUser.setFirstName(request.getParameter("firstName"));
-		newUser.setLastName(request.getParameter("lastName"));
-		newUser.setPassword(hash);
-		newUser.setSalt(Base64.encodeBytes(salt));
-		newUser.setUserName(request.getParameter("userName"));
-		
-		rpDAO.saveUser(newUser);
-		model.put("user", newUser);
-		
-		List<String> foodTypes = rpDAO.getFoodTypes();
-		model.put("foodTypes", foodTypes);
+		try {
+			String password = request.getParameter("password");
+			PasswordHasher hasher = new PasswordHasher();
+			byte[] salt = hasher.generateRandomSalt();
+			String hash = hasher.computeHash(password, salt);
+			
+			User newUser = new User();
+			newUser.setFirstName(request.getParameter("firstName"));
+			newUser.setLastName(request.getParameter("lastName"));
+			newUser.setPassword(hash);
+			newUser.setSalt(Base64.encodeBytes(salt));
+			newUser.setUserName(request.getParameter("userName"));
+			
+			rpDAO.saveUser(newUser);
+			model.put("user", newUser);
+			
+			List<String> foodTypes = rpDAO.getFoodTypes();
+			model.put("foodTypes", foodTypes);
+		}
+		catch (Exception ex) {
+			model.put("error", ex.getMessage());
+		}
 		
 		return "RestaurantPicker";
 	}

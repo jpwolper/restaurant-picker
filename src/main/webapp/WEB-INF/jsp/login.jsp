@@ -32,7 +32,7 @@
 <p>Sometimes the toughest decision is "Where are we going to eat?" Behold the amazing benefits of using Restaurant Picker and why you should sign up immediately!</p>
 </div>
 <div>
-	<c:url var="formAction" value="/login" />
+	<c:url var="formAction" value="/" />
 	<form method="POST" action="${formAction}">
 		<div>
 			<label for="userName">User Name: </label> <input type="text"

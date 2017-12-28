@@ -26,18 +26,28 @@ public class RestaurantPickerController {
 	@RequestMapping(path = "/picker", method = RequestMethod.GET)
 	public String restaurantPickerPageGet(ModelMap model) {
 		
-		List<String> types = rpDAO.getFoodTypes();
-		model.put("foodTypes", types);
+		try {
+			List<String> types = rpDAO.getFoodTypes();
+			model.put("foodTypes", types);
+		}
+		catch(Exception ex) {
+			model.put("error", ex.getMessage());
+		}
 		return "RestaurantPicker";
 	}
 
 	@RequestMapping(path = "/picker", method = RequestMethod.POST)
 	public String restaurantPickerPagePost(ModelMap model, HttpServletRequest request) {
-		int rating = Integer.parseInt(request.getParameter("stars"));
-		String type = request.getParameter("typeOfFood");
-		List<Restaurant> restaurants = rpDAO.getRestaurants(type, rating);
-		int randomNum = ThreadLocalRandom.current().nextInt(0, restaurants.size());
-		model.put("restaurant", restaurants.get(randomNum));
+		try {
+			int rating = Integer.parseInt(request.getParameter("stars"));
+			String type = request.getParameter("typeOfFood");
+			List<Restaurant> restaurants = rpDAO.getRestaurants(type, rating);
+			int randomNum = ThreadLocalRandom.current().nextInt(0, restaurants.size());
+			model.put("restaurant", restaurants.get(randomNum));
+		}
+		catch(Exception ex) {
+			model.put("error", ex.getMessage());
+		}
 		return "Details";
 	}
 }

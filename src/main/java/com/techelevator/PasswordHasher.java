@@ -14,7 +14,7 @@ import org.bouncycastle.util.encoders.Base64;
 public class PasswordHasher {
 	
 	private static final int KEY_LENGTH = 128;
-	private static final int WORK_FACTOR = 100000;
+	private static final int WORK_FACTOR = 10000;
 	
 	private SecureRandom random;
 	

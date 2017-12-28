@@ -35,18 +35,19 @@ public class JDBCRestaurantPickerDAO implements RestaurantPickerDAO {
 		User newUser = new User();
 		String sqlGetUser = "Select * FROM users WHERE username = ?";
 		SqlRowSet results = jdbctemplate.queryForRowSet(sqlGetUser, userName);
-		newUser = mapRowToUser(results);
+		if (results.next()) {
+			newUser = mapRowToUser(results);
+		}
 		return newUser;
 	}
 
 	@Override
 	public List<Restaurant> getRestaurants(String foodType, int minRating) {
 		List<Restaurant> newRestaurants = new ArrayList<Restaurant>();
-		String sqlGetRestaurant = "Select * FROM restaurants WHERE foodtype = ? AND rating = ?";
+		String sqlGetRestaurant = "Select * FROM restaurants WHERE foodtype = ? AND rating >= ?";
 		SqlRowSet results = jdbctemplate.queryForRowSet(sqlGetRestaurant, foodType, minRating);
 		while (results.next()) {
 			newRestaurants.add(mapRowToRestaurant(results));
-			results.next();
 		}	
 		
 		return newRestaurants;
@@ -59,7 +60,6 @@ public class JDBCRestaurantPickerDAO implements RestaurantPickerDAO {
 		SqlRowSet results = jdbctemplate.queryForRowSet(sqlGetAllFoodTypes);
 		while (results.next()) {
 			allFoodTypes.add(results.getString("foodtype"));
-			results.next();
 		}	
 		
 		return allFoodTypes;
@@ -72,10 +72,12 @@ public class JDBCRestaurantPickerDAO implements RestaurantPickerDAO {
 		u.setPassword(results.getString("password"));
 		u.setFirstName(results.getString("firstname"));
 		u.setLastName(results.getString("lastname"));
+		u.setSalt(results.getString("salt"));
 		return u;
 	}
 	private Restaurant mapRowToRestaurant(SqlRowSet results) {
 		Restaurant rest = new Restaurant();
+		rest.setRestaurantName(results.getString("restaurantname"));
 		rest.setRestaurantId(results.getLong("restaurantid"));
 		rest.setStreetAddress(results.getString("streetAddress"));
 		rest.setZipCode(results.getString("zipcode"));
